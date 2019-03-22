@@ -1,0 +1,20 @@
+<h1>Goods</h1>
+
+<table>
+  <thead>
+    <tr><th>Name</th><th>Price</th><th></th></tr>
+  </thead>
+  <tbody>
+    <% for (let goodsItem of goods) { %>
+      <tr>
+        <td><%= goodsItem.name %></td>
+        <td><%= goodsItem.price %>$</td>
+        <td>
+          <a href="/goods/<%= goodsItem._id %>">Show</a>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<a href="/goods/new">Create New Goods Item</a>
