@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-const mongoUrl = 'mongodb://localhost:27017/shop';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/shop';
 let mongo;
 MongoClient
   .connect(mongoUrl, { useNewUrlParser: true })
@@ -59,6 +59,8 @@ app.post('/goods', function(req, res) {
     });
 });
 
-app.listen(3000, function() {
-  console.log('App started at http://localhost:3000');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function() {
+  console.log(`App started at http://localhost:${PORT}`);
 });
